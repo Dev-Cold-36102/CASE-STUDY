@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        canvas {
+            background: #eee;
+            display: block;
+            margin: 0 auto;
+        }
+        .buttonControl {
+            width:120px;
+            height: 30px;
+            background-color: #c6e7ff;
+            color: #ff6f6b;
+        }
+        .buttonMenu {
+            width:120px;
+            height: 30px;
+            background-color: #b8ff9a;
+            color: #ff4a45;
+        }
+    </style>
+</head>
+<body>
+<table cellspacing="0">
+    <tr>
+        <td height="600" style="border: red" width="790">
+            <fieldset>
+                <canvas height="605" id="myCanvas" width="790"></canvas>
+            </fieldset>
+        </td>
+        <td valign="top" width="120">
+            <table>
+                <tr>
+                    <fieldset>
+                        <button class="buttonControl"  onclick="newGame()">NEW GAME</button>
+                        <br/><br/>
+                        <button class="buttonControl"  onclick="main()">START</button>
+                        <br/><br/>
+                        <button class="buttonControl" id="pauseResume" onclick="pause()"></button>
+                        <br/><br/>
+                        <button class="buttonControl" onclick="x2speed()">x2 SPEED</button>
+                        <br/><br/>
+                        <button class="buttonControl" id="useMouse" onclick="useMouse()"></button>
+                    </fieldset>
+                </tr>
+                <tr><td height="10"></td></tr>
+                <tr>
+                    <td>
+                        <fieldset>
+                            <button class="buttonMenu"  onclick="easy()">EASY</button>
+                            <br/><br/>
+                            <button class="buttonMenu"  onclick="normal()">NORMAL</button>
+                            <br/><br/>
+                            <button class="buttonMenu"  onclick="difficult()">DIFFICULT</button>
+                        </fieldset>
+                    </td>
+                </tr>
+            </table>
+
+        </td>
+    </tr>
+</table>
+<script src="draw.js"></script>
+<script src="main.js"></script>
+<script src="control.js"></script>
+
+</body>
+</html>
