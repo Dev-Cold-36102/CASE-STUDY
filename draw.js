@@ -120,7 +120,7 @@ function drawBrick() {
                 brickStatus[i][j].positionX = brickX;
                 brickStatus[i][j].positionY = brickY;
                 ctx.beginPath();
-                ctx.fillStyle = "orange";
+                ctx.fillStyle = "#ff8905";
                 ctx.fillRect(brickX, brickY, brick.width, brick.height);
                 ctx.closePath();
 
@@ -172,6 +172,8 @@ function difficult() {
 
 function drawAll() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "#d6cbff";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
     drawHeart();
     drawBall();
     drawBar();

@@ -1,11 +1,13 @@
 document.getElementById("pauseResume").innerHTML = "PAUSE";
 document.getElementById("useMouse").innerHTML = "NOT USE MOUSE";
-document.getElementById("myCanvas").innerHTML="<img width=\"790\" height=\"600\" src=\"gameover.jpg\">";
+ctx.fillStyle = "#d6cbff";
+ctx.fillRect(0, 0, canvas.width, canvas.height);
 drawBall();
 drawBar();
 drawBrick();
 drawScore();
 drawLives();
+
 function alertGameOver() {
     alert("GAME OVER (-_-)");
 }
@@ -17,6 +19,6 @@ function main() {
 
 function newGame() {
     document.location.reload();
-
 }
+
 

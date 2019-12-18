@@ -5,7 +5,6 @@ document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
 document.addEventListener("mousemove", mouseMoveHandler, false);
 
-
 function keyDownHandler(evt) {
     if (evt.keyCode == 39) {
         rightPress = true;
@@ -54,8 +53,7 @@ function checkCollision() {
                     if (score == 8 * 4) {
                         audioGame.play();
                         alert("WIN!");
-
-                        setTimeout(newGame,5000);
+                        setTimeout(newGame, 5000);
                     }
                 }
             }
@@ -97,60 +95,55 @@ function ballMove() {
             audioBall.play();
         } else {
             lives--;
-
             ball.positionX = canvas.width / 2;
             ball.positionY = canvas.height - ball.radius - bar.height;
-
             bar.positionX = (canvas.width - bar.width) / 2;
         }
     }
-
 }
 
 function run() {
     if (!lives) {
+        clearInterval(playElement);
+        audioGame.play();
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         let picture = new Image();
         picture.src = "gameover.jpg";
         picture.onload = function () {
             ctx.drawImage(picture, 0, 0, canvas.width, canvas.height);
-            audioGame.play();
-            setTimeout(alertGameOver,300);
         }
-        clearInterval(playElement);
-
-    }
-
-    if (check == 1) {
-        drawAll();
-        if (countBomb == 2) {
-            drawBomb(bomb1);
-            bomb1.status();
-            bomb1.positionY += 3;
-        } else if (countBomb == 3) {
-            drawBomb(bomb1);
-            drawBomb(bomb2);
-            bomb1.positionY += 3;
-            bomb2.positionY += 4;
-            bomb1.status();
-            bomb2.status();
-        }
-
-        if (rightPress && bar.positionX < canvas.width - bar.width) {
-            bar.positionX += 10;
-        } else if (leftPress && bar.positionX > 0) {
-            bar.positionX -= 10;
-        }
+        setTimeout(alertGameOver, 300);
     } else {
-        heart.positionY += 0;
-        bomb.positionY += 0;
-        bomb1.positionY += 0;
-        bomb2.positionY += 0;
-        ball.positionX += 0;
-        ball.positionY += 0;
+        if (check == 1) {
+            drawAll();
+            if (countBomb == 2) {
+                drawBomb(bomb1);
+                bomb1.status();
+                bomb1.positionY += 3;
+            } else if (countBomb == 3) {
+                drawBomb(bomb1);
+                drawBomb(bomb2);
+                bomb1.status();
+                bomb2.status();
+                bomb1.positionY += 3;
+                bomb2.positionY += 4;
+            }
+            if (rightPress && bar.positionX < canvas.width - bar.width) {
+                bar.positionX += 10;
+            } else if (leftPress && bar.positionX > 0) {
+                bar.positionX -= 10;
+            }
+        } else {
+            heart.positionY += 0;
+            bomb.positionY += 0;
+            bomb1.positionY += 0;
+            bomb2.positionY += 0;
+            ball.positionX += 0;
+            ball.positionY += 0;
+        }
     }
-
 }
+
 
 
 
