@@ -28,12 +28,15 @@
         }
     </style>
 </head>
-<body>
+
+<body onload="playMusic()">
+
 <table cellspacing="0">
     <tr>
         <td height="600" style="border: red" width="790">
             <fieldset>
-                <canvas height="605" id="myCanvas" width="790"></canvas>
+
+                <canvas height="605" id="myCanvas" width="790" ></canvas>
             </fieldset>
         </td>
         <td valign="top" width="120">
@@ -68,9 +71,16 @@
         </td>
     </tr>
 </table>
+
 <script src="draw.js"></script>
 <script src="main.js"></script>
 <script src="control.js"></script>
+<script>
+    function playMusic() {
+        audioBackground.play().then( function () {
 
+        });
+    }
+</script>
 </body>
 </html>

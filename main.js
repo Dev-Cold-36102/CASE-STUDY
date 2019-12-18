@@ -1,14 +1,15 @@
 document.getElementById("pauseResume").innerHTML = "PAUSE";
 document.getElementById("useMouse").innerHTML = "NOT USE MOUSE";
+document.getElementById("myCanvas").innerHTML="<img width=\"790\" height=\"600\" src=\"gameover.jpg\">";
 drawBall();
 drawBar();
 drawBrick();
 drawScore();
 drawLives();
-function choose_lever() {
-    alert("please choose the lever (^-^)");
+function alertGameOver() {
+    alert("GAME OVER (-_-)");
 }
-setTimeout(choose_lever,20);
+
 function main() {
     check = 1;
     playElement = setInterval(run, speed);
@@ -16,5 +17,6 @@ function main() {
 
 function newGame() {
     document.location.reload();
+
 }
 

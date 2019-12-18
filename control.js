@@ -38,7 +38,7 @@ function mouseMoveHandler(evt) {
 function x2speed() {
     speed /= 2;
     clearInterval(playElement);
-    setInterval(run, speed);
+    playElement = setInterval(run, speed);
 }
 
 function checkCollision() {
@@ -47,12 +47,15 @@ function checkCollision() {
             var temp = brickStatus[i][j];
             if (temp.status == 1) {
                 if (ball.positionX > temp.positionX && ball.positionX < temp.positionX + brick.width && ball.positionY > temp.positionY && ball.positionY < temp.positionY + brick.height) {
+                    audioBrick.play();
                     dy = -dy;
                     temp.status = 0;
                     score++;
                     if (score == 8 * 4) {
+                        audioGame.play();
                         alert("WIN!");
-                        document.location.reload();
+
+                        setTimeout(newGame,5000);
                     }
                 }
             }
@@ -80,15 +83,18 @@ function useMouse() {
     }
 }
 
-function destroyBrick() {
+function ballMove() {
     if (ball.positionX > canvas.width - ball.radius || ball.positionX < ball.radius) {
         dx = -dx;
+        audioBall.play();
     }
     if (ball.positionY < ball.radius) {
         dy = -dy;
+        audioBall.play();
     } else if (ball.positionY + ball.radius > canvas.height - bar.height) {
         if (ball.positionX > bar.positionX && ball.positionX < bar.positionX + bar.width) {
             dy = -dy;
+            audioBall.play();
         } else {
             lives--;
 
@@ -102,9 +108,17 @@ function destroyBrick() {
 }
 
 function run() {
-    if (lives == 0) {
-        window.location.reload();
-        alert("GAME OVER (-_-)");
+    if (!lives) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        let picture = new Image();
+        picture.src = "gameover.jpg";
+        picture.onload = function () {
+            ctx.drawImage(picture, 0, 0, canvas.width, canvas.height);
+            audioGame.play();
+            setTimeout(alertGameOver,300);
+        }
+        clearInterval(playElement);
+
     }
 
     if (check == 1) {
@@ -135,7 +149,6 @@ function run() {
         ball.positionX += 0;
         ball.positionY += 0;
     }
-    console.log(speed);
 
 }
 

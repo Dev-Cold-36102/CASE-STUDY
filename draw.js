@@ -42,9 +42,11 @@ function Obstacles(positionX, positionY, width, height, src, live) {
                 if (this.live > 0) {
                     if (lives < 3) {
                         lives += this.live;
+                        audioHeart.play();
                     }
                 } else {
                     lives += this.live;
+                    audioBomb.play();
                 }
                 this.positionX = Math.random() * (canvas.width - this.width);
             }
@@ -71,14 +73,20 @@ var brickOffsetTop = 50;
 var brickOffsetLeft = 30;
 var rightPress = false;
 var leftPress = false;
-var dx = 3/2;
-var dy = -3/2;
-var dYheart = 5;
+var dx = 3 / 2;
+var dy = -3 / 2;
 var score = 0;
 var lives = 3;
 var speed = 10;
 var countBomb = 1;
 var playElement;
+var audioBomb = new Audio('bomb.mp3');
+var audioHeart = new Audio('ting.mp3');
+var audioBrick = new Audio('brick.mp3');
+var audioBall = new Audio('ball.mp3');
+var audioGame = new Audio('Mario.mp3');
+var audioBackground = new Audio('background.mp3');
+
 
 for (let i = 0; i < 4; i++) {
     brickStatus[i] = [];
@@ -94,6 +102,7 @@ function drawBall() {
     ctx.fill();
     ctx.closePath();
 }
+
 
 function drawBar() {
     ctx.beginPath();
@@ -174,7 +183,7 @@ function drawAll() {
     bomb.positionY += 2;
     ball.move();
     checkCollision();
-    destroyBrick();
+    ballMove();
     bomb.status();
     heart.status();
 }
