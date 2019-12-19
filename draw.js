@@ -86,7 +86,7 @@ var audioBrick = new Audio('brick.mp3');
 var audioBall = new Audio('ball.mp3');
 var audioGame = new Audio('Mario.mp3');
 var audioBackground = new Audio('background.mp3');
-setInterval(audioBackground.play(),127000);
+
 
 for (let i = 0; i < 4; i++) {
     brickStatus[i] = [];
