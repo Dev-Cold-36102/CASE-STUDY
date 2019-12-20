@@ -7,7 +7,7 @@ drawBar();
 drawBrick();
 drawScore();
 drawLives();
-
+setInterval(audioBackground.play(),120000);
 function alertGameOver() {
     alert("GAME OVER (-_-)");
 }
