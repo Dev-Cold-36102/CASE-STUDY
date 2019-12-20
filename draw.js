@@ -103,7 +103,6 @@ function drawBall() {
     ctx.closePath();
 }
 
-
 function drawBar() {
     ctx.beginPath();
     ctx.fillStyle = "green";
@@ -170,6 +169,18 @@ function difficult() {
     countBomb = 3;
 }
 
+function drawGameover() {
+    clearInterval(playElement);
+    audioGame.play();
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    let picture = new Image();
+    picture.src = "gameover.jpg";
+    picture.onload = function () {
+        ctx.drawImage(picture, 0, 0, canvas.width, canvas.height);
+    }
+    setTimeout(alertGameOver, 500);
+}
+
 function drawAll() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = "#d6cbff";
@@ -189,6 +200,8 @@ function drawAll() {
     bomb.status();
     heart.status();
 }
+
+
 
 
 

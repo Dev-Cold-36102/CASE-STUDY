@@ -104,15 +104,7 @@ function ballMove() {
 
 function run() {
     if (!lives) {
-        clearInterval(playElement);
-        audioGame.play();
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        let picture = new Image();
-        picture.src = "gameover.jpg";
-        picture.onload = function () {
-            ctx.drawImage(picture, 0, 0, canvas.width, canvas.height);
-        }
-        setTimeout(alertGameOver, 300);
+        drawGameover();
     } else {
         if (check == 1) {
             drawAll();
